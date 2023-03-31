@@ -2,28 +2,42 @@
 <div class="container col md-6">
     <h1 class="col" style="text-align: center;">{{ titulo }}</h1><br/>
         <form class="form-group row">
+            
+            <div class="form-group col-md-3">
+                <label for="cus_entity">Entity : </label>
+                <select class="form-select" name="cus_entity" aria-label="Entity" [(ngModel)]="cus_entity">
+                    <option *ngFor="let option of entities" [value]="option">{{ option }}</option>
+                </select>
+            </div>
+
+
             <div class="form-group col-md-3">
                 <label for="cus_corporatename">Corporate name : </label>
                 <input type="text" class="form-control" placeholder="cus_corporatename" id="cus_corporatename" name="cus_corporatename" [(ngModel)]="cus_corporatename"><br/>
             </div>
-            <div class="form-group col-md-3">
+<!--
+           <div class="form-group col-md-3">
                 <label for="cus_entity">Entity : </label>
                 <input type="number" class="form-control" placeholder="cus_entity" name="cus_entity" [(ngModel)]="cus_entity"><br/>
             </div>
+-->
+            
             <div class="form-group col-md-3">
                 <label for="cus_corporatename">Commercial name : </label>
                 <input type="text" class="form-control" placeholder="cus_commercialname" name="cus_commercialname" [(ngModel)]="cus_commercialname"><br/>
             </div>
             <div class="form-group col-md-3">
-                <label for="cus_corporatename">Country : </label>
-                <input type="text" class="form-control" placeholder="cus_country" name="cus_country" [(ngModel)]="cus_country"><br/>
+                <label for="cus_country">Country : </label>
+                <select class="form-select" aria-label="Country" name="cus_country" [(ngModel)]="cus_country">
+                    <option *ngFor="let option of countries" [value]="option">{{ option }}</option>
+                </select>
             </div>
             <div class="form-group col-md-3">
                 <label for="cus_corporatename">Alias : </label>
                 <input type="text" class="form-control" placeholder="cus_alias" name="cus_alias" [(ngModel)]="cus_alias"><br/>
             </div>
             <div class="form-group col-md-3">
-                <label for="cus_corporatename">cus_taxid : </label>
+                <label for="cus_corporatename">CIF / NIF : </label>
                 <input type="text" class="form-control" placeholder="cus_taxid" name="cus_taxid" [(ngModel)]="cus_taxid"><br/>
             </div>
             <div class="form-group col-md-3">
@@ -31,19 +45,19 @@
                 <input type="text" class="form-control" placeholder="cus_taxidtype" name="cus_taxidtype" [(ngModel)]="cus_taxidtype"><br/>
             </div>
             <div class="form-group col-md-3">
-                <label for="cus_corporatename">Unknown : </label>
+                <label for="cus_corporatename">Clientes varios : </label>
                 <input type="text" class="form-control" placeholder="cus_unknown" name="cus_unknown" [(ngModel)]="cus_unknown"><br/>
             </div>
             <div class="form-group col-md-3">
-                <label for="cus_corporatename">cur_cus_fk : </label>
+                <label for="cus_corporatename">Divisa : </label>
                 <input type="number" class="form-control" placeholder="cur_cus_fk" name="cur_cus_fk" [(ngModel)]="cur_cus_fk"><br/>
             </div>
             <div class="form-group col-md-3">
-                <label for="cus_corporatename">tas_cus_fk : </label>
+                <label for="cus_corporatename">Sistema de Impuestos : </label>
                 <input type="number" class="form-control" placeholder="tas_cus_fk" name="tas_cus_fk" [(ngModel)]="tas_cus_fk"><br/>
             </div>
             <div class="form-group col-md-3">
-                <label for="cus_corporatename">pam_cus_fk : </label>
+                <label for="cus_corporatename">Forma de pago : </label>
                 <input type="number" class="form-control" placeholder="pam_cus_fk" name="pam_cus_fk" [(ngModel)]="pam_cus_fk"><br/>
             </div>
             <div>

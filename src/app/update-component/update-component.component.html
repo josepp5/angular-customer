@@ -9,15 +9,19 @@
             </div>
             <div class="form-group col-md-3">
                 <label for="cus_entity">Entity : </label>
-                <input type="number" class="form-control" placeholder="cus_entity" name="cus_entity" [(ngModel)]="cus_entity"><br/>
+                <select class="form-select" name="cus_entity" aria-label="Entity" [(ngModel)]="cus_entity">
+                    <option *ngFor="let option of entities" [value]="option">{{ option }}</option>
+                </select>
             </div>
             <div class="form-group col-md-3">
                 <label for="cus_corporatename">Commercial name : </label>
                 <input type="text" class="form-control" placeholder="cus_commercialname" name="cus_commercialname" [(ngModel)]="cus_commercialname"><br/>
             </div>
             <div class="form-group col-md-3">
-                <label for="cus_corporatename">Country : </label>
-                <input type="text" class="form-control" placeholder="cus_country" name="cus_country" [(ngModel)]="cus_country"><br/>
+                <label for="cus_country">Country : </label>
+                <select class="form-select" aria-label="Country" name="cus_country" [(ngModel)]="cus_country">
+                    <option *ngFor="let option of countries" [value]="option">{{ option }}</option>
+                </select>
             </div>
             <div class="form-group col-md-3">
                 <label for="cus_corporatename">Alias : </label>

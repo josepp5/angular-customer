@@ -11,6 +11,17 @@ import { FastapiService } from '../services/fastapi.service';
 export class CustomerFormListComponent {
   titulo:string = "Customer Form";
   clientes:Customer[]=[];
+  entities:string[]=[
+    "Fisica",
+    "Juridica"
+  ]
+
+  countries:string[]=[
+    "España",
+    "Italia",
+    "Francia",
+    "Alemania"
+  ]
 
   cus_corporatename:any;
   cus_commercialname:any;
@@ -30,8 +41,8 @@ export class CustomerFormListComponent {
 
     this.dataService.getCustomers().subscribe(
       (response:any) => {
-
         this.clientes = Object.values(response['result'])
+        console.log(this.clientes);
         
     });
   }
@@ -50,7 +61,6 @@ export class CustomerFormListComponent {
       miCliente.cus_id = this.clientes.length+1;
       miCliente.cus_corporatename = this.cus_corporatename;
       miCliente.cus_commercialname = this.cus_commercialname;
-      miCliente.cus_entity = this.cus_entity;
       miCliente.cus_country = this.cus_country;
       miCliente.cus_alias = this.cus_alias;
       miCliente.cus_taxid = this.cus_taxid;
@@ -59,6 +69,10 @@ export class CustomerFormListComponent {
       miCliente.cur_cus_fk = this.cur_cus_fk;
       miCliente.tas_cus_fk = this.tas_cus_fk;
       miCliente.pam_cus_fk = this.pam_cus_fk;
+
+      if (this.cus_entity == "Fisica") miCliente.cus_entity = 1; else miCliente.cus_entity = 2
+      if (this.cus_country == "España") miCliente.cus_country = "ES"; else miCliente.cus_country = "IT"
+    
       
     console.log(miCliente);
     

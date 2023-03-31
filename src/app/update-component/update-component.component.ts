@@ -13,6 +13,18 @@ export class UpdateComponentComponent {
   clientes:Customer[]=[];
   customer:any;
 
+  entities:string[]=[
+    "Fisica",
+    "Juridica"
+  ]
+
+  countries:string[]=[
+    "España",
+    "Italia",
+    "Francia",
+    "Alemania"
+  ]
+
   cus_corporatename:any;
   cus_commercialname:any;
   cus_entity:any;
@@ -24,6 +36,8 @@ export class UpdateComponentComponent {
   cur_cus_fk:any;
   tas_cus_fk:any;
   pam_cus_fk:any;
+
+  
 
   index:any;
 
@@ -73,6 +87,10 @@ export class UpdateComponentComponent {
       miCliente.cur_cus_fk = this.cur_cus_fk;
       miCliente.tas_cus_fk = this.tas_cus_fk;
       miCliente.pam_cus_fk = this.pam_cus_fk;
+
+      if (this.cus_entity == "Fisica") miCliente.cus_entity = 1; else miCliente.cus_entity = 2
+      if (this.cus_country == "España") miCliente.cus_country = "ES"; else miCliente.cus_country = "IT"
+
     this.dataService.actualizarCustomer(this.index,miCliente).subscribe(
       response => { console.log("Se ha modificado el cliente: " + response);
     },
