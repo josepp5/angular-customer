@@ -1,0 +1,59 @@
+
+
+<div class="container">
+    <h1 style="text-align: center;">Update Form</h1>
+        <form class="form-group row">
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Corporate name : </label>
+                <input type="text" class="form-control" placeholder="cus_corporatename" id="cus_corporatename" name="cus_corporatename" [(ngModel)]="cus_corporatename"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_entity">Entity : </label>
+                <input type="number" class="form-control" placeholder="cus_entity" name="cus_entity" [(ngModel)]="cus_entity"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Commercial name : </label>
+                <input type="text" class="form-control" placeholder="cus_commercialname" name="cus_commercialname" [(ngModel)]="cus_commercialname"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Country : </label>
+                <input type="text" class="form-control" placeholder="cus_country" name="cus_country" [(ngModel)]="cus_country"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Alias : </label>
+                <input type="text" class="form-control" placeholder="cus_alias" name="cus_alias" [(ngModel)]="cus_alias"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">cus_taxid : </label>
+                <input type="text" class="form-control" placeholder="cus_taxid" name="cus_taxid" [(ngModel)]="cus_taxid"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Tipo ID Fiscal : </label>
+                <input type="text" class="form-control" placeholder="cus_taxidtype" name="cus_taxidtype" [(ngModel)]="cus_taxidtype"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Unknown : </label>
+                <input type="text" class="form-control" placeholder="cus_unknown" name="cus_unknown" [(ngModel)]="cus_unknown"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">cur_cus_fk : </label>
+                <input type="number" class="form-control" placeholder="cur_cus_fk" name="cur_cus_fk" [(ngModel)]="cur_cus_fk"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">tas_cus_fk : </label>
+                <input type="number" class="form-control" placeholder="tas_cus_fk" name="tas_cus_fk" [(ngModel)]="tas_cus_fk"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">pam_cus_fk : </label>
+                <input type="number" class="form-control" placeholder="pam_cus_fk" name="pam_cus_fk" [(ngModel)]="pam_cus_fk"><br/>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary" (click)="updateCustomer()">Actualizar</button>
+            </div>
+        </form>
+    <br/>
+    <div>
+        <button class="btn btn-primary" [routerLink]="['/']">Home</button>
+    </div>
+</div>
+

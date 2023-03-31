@@ -1,0 +1,97 @@
+
+<div class="container col md-6">
+    <h1 class="col" style="text-align: center;">{{ titulo }}</h1><br/>
+        <form class="form-group row">
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Corporate name : </label>
+                <input type="text" class="form-control" placeholder="cus_corporatename" id="cus_corporatename" name="cus_corporatename" [(ngModel)]="cus_corporatename"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_entity">Entity : </label>
+                <input type="number" class="form-control" placeholder="cus_entity" name="cus_entity" [(ngModel)]="cus_entity"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Commercial name : </label>
+                <input type="text" class="form-control" placeholder="cus_commercialname" name="cus_commercialname" [(ngModel)]="cus_commercialname"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Country : </label>
+                <input type="text" class="form-control" placeholder="cus_country" name="cus_country" [(ngModel)]="cus_country"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Alias : </label>
+                <input type="text" class="form-control" placeholder="cus_alias" name="cus_alias" [(ngModel)]="cus_alias"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">cus_taxid : </label>
+                <input type="text" class="form-control" placeholder="cus_taxid" name="cus_taxid" [(ngModel)]="cus_taxid"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Tipo ID Fiscal : </label>
+                <input type="text" class="form-control" placeholder="cus_taxidtype" name="cus_taxidtype" [(ngModel)]="cus_taxidtype"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Unknown : </label>
+                <input type="text" class="form-control" placeholder="cus_unknown" name="cus_unknown" [(ngModel)]="cus_unknown"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">cur_cus_fk : </label>
+                <input type="number" class="form-control" placeholder="cur_cus_fk" name="cur_cus_fk" [(ngModel)]="cur_cus_fk"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">tas_cus_fk : </label>
+                <input type="number" class="form-control" placeholder="tas_cus_fk" name="tas_cus_fk" [(ngModel)]="tas_cus_fk"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">pam_cus_fk : </label>
+                <input type="number" class="form-control" placeholder="pam_cus_fk" name="pam_cus_fk" [(ngModel)]="pam_cus_fk"><br/>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary" (click)="registrarUsuario()">Registrar Cliente</button>
+            </div>
+        </form>
+<br/>
+</div>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Razón Social</th>
+            <th>Nom.Comercial</th>
+            <th>Entidad</th>
+            <th>Tipo Cliente</th>
+            <th>Alias</th>
+            <th>Clientes varios</th>
+            <th>Pais</th>
+            <th>CIF-NIF</th>
+            <th>Tipo ID Fiscal</th>
+            <th>Divisa</th>
+            <th>Tarifa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Agrega una fila para cada objeto cliente en el array -->
+          <tr *ngFor="let cliente of clientes">
+            <td>{{ cliente.cus_id }}</td>
+            <td>{{ cliente.cus_corporatename }}</td>
+            <td>{{ cliente.cus_commercialname }}</td>
+            <td>{{ cliente.cus_entity }}</td>
+            <td>{{ cliente.cca_cus_fk }}</td>
+            <td>{{ cliente.cus_alias }}</td>
+            <td>{{ cliente.cus_unknown }}</td>
+            <td>{{ cliente.cus_country }}</td>
+            <td>{{ cliente.cus_taxid }}</td>
+            <td>{{ cliente.cus_taxidtype }}</td>
+            <td>{{ cliente.cur_cus_fk }}</td>
+            <td>{{ cliente.plc_cus_fk }}</td>
+            <td><button class="btn btn-warning" [routerLink]="['/update',cliente.cus_id]">Modificar</button></td>
+            <td><button class="btn btn-danger" (click)="onDelete(cliente.cus_id)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+
+
