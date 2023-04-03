@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Customer } from '../models/Customer';
+import { AuthService } from './authService.service';
+import { Country } from '../models/Country';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class FastapiService {
 
   clientes:Customer[]=[]
 
-  constructor(private http:HttpClient) { 
+  constructor(private http:HttpClient,private authService: AuthService) { 
 
     this.getCustomers().subscribe(
       (response:any) => {
@@ -25,16 +27,17 @@ export class FastapiService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.authService.token}`
     })
   };
 
   getCustomers(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(this.url+'/customer/');
+    return this.http.get<Customer[]>(this.url+'/customer/', this.httpOptions);
   }
 
   getCustomer(id: number): Observable<Customer> {
-    return this.http.get<Customer>(this.url+`/customer/${id}`);
+    return this.http.get<Customer>(this.url+`/customer/${id}`, this.httpOptions);
   }
 
   registrarCustomer(customer: Customer) {
@@ -48,6 +51,19 @@ export class FastapiService {
   }
 
   eliminarCustomer(id: number) {
-    return this.http.delete(this.url+`/customer/${id}`);
+    return this.http.delete(this.url+`/customer/${id}`, this.httpOptions);
   }
+
+  loginUser(userName:string,password:string){
+    const formData = new FormData();
+    formData.append('username', userName);
+    formData.append('password', password);
+    return this.http.post<Response>(this.url+'/login', formData);
+  }
+
+  getCountries(): Observable<Country[]> {
+    return this.http.get<Country[]>(this.url+'/countries', this.httpOptions);
+  }
+
 }
+

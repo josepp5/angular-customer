@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Customer } from '../models/Customer';
 import { FastapiService } from '../services/fastapi.service';
+import { Country } from '../models/Country';
 
 @Component({
   selector: 'app-customer-form-list',
@@ -11,17 +12,21 @@ import { FastapiService } from '../services/fastapi.service';
 export class CustomerFormListComponent {
   titulo:string = "Customer Form";
   clientes:Customer[]=[];
-  entities:string[]=[
-    "Fisica",
-    "Juridica"
-  ]
+  countries:Country[]=[];
+  entities = {
+    "1" : "Fisica",
+    "2" : "Juridica"
+  }
 
-  countries:string[]=[
-    "España",
-    "Italia",
-    "Francia",
-    "Alemania"
-  ]
+  tipoIDFiscal = {
+    '02': 'NIF-IVA',
+    '03': 'Pasaporte',
+    '04': 'Doc. Oficial.exp.Pais de residencia',
+    '05': 'Certificado de residencia',
+    '06': 'Otro doc.probatorio',
+    '07': 'No censado',
+    '08': 'Intracomunitario sin VIES'
+  };
 
   cus_corporatename:any;
   cus_commercialname:any;
@@ -42,8 +47,13 @@ export class CustomerFormListComponent {
     this.dataService.getCustomers().subscribe(
       (response:any) => {
         this.clientes = Object.values(response['result'])
-        console.log(this.clientes);
-        
+        console.log(this.clientes); 
+    });
+
+    this.dataService.getCountries().subscribe(
+      (response:any) => {
+        this.countries = Object.values(response['result'])
+        console.log(this.countries);
     });
   }
 
@@ -71,8 +81,6 @@ export class CustomerFormListComponent {
       miCliente.pam_cus_fk = this.pam_cus_fk;
 
       if (this.cus_entity == "Fisica") miCliente.cus_entity = 1; else miCliente.cus_entity = 2
-      if (this.cus_country == "España") miCliente.cus_country = "ES"; else miCliente.cus_country = "IT"
-    
       
     console.log(miCliente);
     

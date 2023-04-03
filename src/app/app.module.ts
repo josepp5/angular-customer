@@ -8,18 +8,24 @@ import { CustomerFormListComponent } from './customer-form-list/customer-form-li
 import { FastapiService } from './services/fastapi.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UpdateComponentComponent } from './update-component/update-component.component';
+import { LoginComponentComponent } from './login-component/login-component.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ResponsiveLoginComponent } from './responsive-login/responsive-login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerFormListComponent,
-    UpdateComponentComponent
+    UpdateComponentComponent,
+    LoginComponentComponent,
+    ResponsiveLoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [FastapiService],
   bootstrap: [AppComponent]

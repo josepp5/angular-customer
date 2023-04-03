@@ -6,7 +6,7 @@
             <div class="form-group col-md-3">
                 <label for="cus_entity">Entity : </label>
                 <select class="form-select" name="cus_entity" aria-label="Entity" [(ngModel)]="cus_entity">
-                    <option *ngFor="let option of entities" [value]="option">{{ option }}</option>
+                    <option *ngFor="let option of entities | keyvalue" [value]="option.key">{{ option.value }}</option>
                 </select>
             </div>
 
@@ -29,7 +29,7 @@
             <div class="form-group col-md-3">
                 <label for="cus_country">Country : </label>
                 <select class="form-select" aria-label="Country" name="cus_country" [(ngModel)]="cus_country">
-                    <option *ngFor="let option of countries" [value]="option">{{ option }}</option>
+                    <option *ngFor="let option of countries" [value]="option.cou_id">{{ option.cou_countryname }}</option>
                 </select>
             </div>
             <div class="form-group col-md-3">
@@ -42,7 +42,9 @@
             </div>
             <div class="form-group col-md-3">
                 <label for="cus_corporatename">Tipo ID Fiscal : </label>
-                <input type="text" class="form-control" placeholder="cus_taxidtype" name="cus_taxidtype" [(ngModel)]="cus_taxidtype"><br/>
+                <select class="form-select" aria-label="cus_taxidtype" name="cus_taxidtype" [(ngModel)]="cus_taxidtype">
+                    <option *ngFor="let option of tipoIDFiscal | keyvalue" [value]="option.key">{{ option.value }}</option>
+                </select>
             </div>
             <div class="form-group col-md-3">
                 <label for="cus_corporatename">Clientes varios : </label>
@@ -91,7 +93,10 @@
             <td>{{ cliente.cus_id }}</td>
             <td>{{ cliente.cus_corporatename }}</td>
             <td>{{ cliente.cus_commercialname }}</td>
-            <td>{{ cliente.cus_entity }}</td>
+            <td>
+                <span *ngIf="cliente.cus_entity === 1">Fisica</span>
+                <span *ngIf="cliente.cus_entity === 2">Juridica</span>
+            </td>
             <td>{{ cliente.cca_cus_fk }}</td>
             <td>{{ cliente.cus_alias }}</td>
             <td>{{ cliente.cus_unknown }}</td>

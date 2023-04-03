@@ -56,7 +56,6 @@ export class UpdateComponentComponent {
     this.dataService.getCustomer(this.index).subscribe(
       (response:any) => {
         this.customer =  response['result'];
-        
         this.cus_corporatename = this.customer.cus_corporatename;
         this.cus_commercialname = this.customer.cus_commercialname;
         this.cus_entity = this.customer.cus_entity;
