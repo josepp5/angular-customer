@@ -1,8 +1,9 @@
-
-<div class="container col md-6">
-    <h1 class="col" style="text-align: center;">{{ titulo }}</h1><br/>
+<div class="container">
+    <app-navbar></app-navbar>
+    <div class="col md-6" style="margin-top: 140px;">
+        <h1 class="col" style="text-align: center;">{{ titulo }}</h1><br />
         <form class="form-group row">
-            
+
             <div class="form-group col-md-3">
                 <label for="cus_entity">Entity : </label>
                 <select class="form-select" name="cus_entity" aria-label="Entity" [(ngModel)]="cus_entity">
@@ -10,67 +11,94 @@
                 </select>
             </div>
 
-
             <div class="form-group col-md-3">
                 <label for="cus_corporatename">Corporate name : </label>
-                <input type="text" class="form-control" placeholder="cus_corporatename" id="cus_corporatename" name="cus_corporatename" [(ngModel)]="cus_corporatename"><br/>
+                <input type="text" class="form-control" placeholder="cus_corporatename" id="cus_corporatename"
+                    name="cus_corporatename" [(ngModel)]="cus_corporatename"><br />
             </div>
-<!--
-           <div class="form-group col-md-3">
-                <label for="cus_entity">Entity : </label>
-                <input type="number" class="form-control" placeholder="cus_entity" name="cus_entity" [(ngModel)]="cus_entity"><br/>
-            </div>
--->
-            
+
             <div class="form-group col-md-3">
                 <label for="cus_corporatename">Commercial name : </label>
-                <input type="text" class="form-control" placeholder="cus_commercialname" name="cus_commercialname" [(ngModel)]="cus_commercialname"><br/>
+                <input type="text" class="form-control" placeholder="cus_commercialname" name="cus_commercialname"
+                    [(ngModel)]="cus_commercialname"><br />
             </div>
             <div class="form-group col-md-3">
                 <label for="cus_country">Country : </label>
                 <select class="form-select" aria-label="Country" name="cus_country" [(ngModel)]="cus_country">
-                    <option *ngFor="let option of countries" [value]="option.cou_id">{{ option.cou_countryname }}</option>
+                    <option *ngFor="let option of countries" [value]="option.cou_id">{{ option.cou_countryname }}
+                    </option>
                 </select>
             </div>
+
             <div class="form-group col-md-3">
                 <label for="cus_corporatename">Alias : </label>
-                <input type="text" class="form-control" placeholder="cus_alias" name="cus_alias" [(ngModel)]="cus_alias"><br/>
+                <input type="text" class="form-control" placeholder="cus_alias" name="cus_alias"
+                    [(ngModel)]="cus_alias"><br />
             </div>
+
             <div class="form-group col-md-3">
                 <label for="cus_corporatename">CIF / NIF : </label>
-                <input type="text" class="form-control" placeholder="cus_taxid" name="cus_taxid" [(ngModel)]="cus_taxid"><br/>
+                <input type="text" class="form-control" placeholder="cus_taxid" name="cus_taxid"
+                    [(ngModel)]="cus_taxid"><br />
             </div>
+
             <div class="form-group col-md-3">
                 <label for="cus_corporatename">Tipo ID Fiscal : </label>
                 <select class="form-select" aria-label="cus_taxidtype" name="cus_taxidtype" [(ngModel)]="cus_taxidtype">
-                    <option *ngFor="let option of tipoIDFiscal | keyvalue" [value]="option.key">{{ option.value }}</option>
+                    <option *ngFor="let option of tipoIDFiscal | keyvalue" [value]="option.key">{{ option.value }}
+                    </option>
                 </select>
             </div>
-            <div class="form-group col-md-3">
-                <label for="cus_corporatename">Clientes varios : </label>
-                <input type="text" class="form-control" placeholder="cus_unknown" name="cus_unknown" [(ngModel)]="cus_unknown"><br/>
-            </div>
+
             <div class="form-group col-md-3">
                 <label for="cus_corporatename">Divisa : </label>
-                <input type="number" class="form-control" placeholder="cur_cus_fk" name="cur_cus_fk" [(ngModel)]="cur_cus_fk"><br/>
+                <select class="form-select" aria-label="cur_cus_fk" name="cur_cus_fk" [(ngModel)]="cur_cus_fk">
+                    <option *ngFor="let option of currencies | keyvalue" [value]="option.key">{{ option.value }}
+                    </option>
+                </select>
             </div>
+
             <div class="form-group col-md-3">
                 <label for="cus_corporatename">Sistema de Impuestos : </label>
-                <input type="number" class="form-control" placeholder="tas_cus_fk" name="tas_cus_fk" [(ngModel)]="tas_cus_fk"><br/>
+                <select class="form-select" name="tas_cus_fk" aria-label="Tax System" [(ngModel)]="tas_cus_fk">
+                    <option *ngFor="let option of taxSystems" [value]="option.tas_id">{{ option.tas_description }}
+                    </option>
+                </select>
             </div>
+
             <div class="form-group col-md-3">
                 <label for="cus_corporatename">Forma de pago : </label>
-                <input type="number" class="form-control" placeholder="pam_cus_fk" name="pam_cus_fk" [(ngModel)]="pam_cus_fk"><br/>
+                <select class="form-select" name="pam_cus_fk" aria-label="PaymentMethods" [(ngModel)]="pam_cus_fk">
+                    <option *ngFor="let option of paymentMethods" [value]="option.pam_id">{{ option.pam_description }}
+                    </option>
+                </select>
             </div>
+
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Tipo de Cliente : </label>
+                <select class="form-select" aria-label="cca_cus_fk" name="cca_cus_fk" [(ngModel)]="cca_cus_fk">
+                    <option *ngFor="let option of tipoCliente | keyvalue" [value]="option.key">{{ option.value }}
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-check form-switch col-md-3 m-4">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Clientes varios </label>
+                <input class="form-check-input" type="checkbox" name="cus_unknown" role="switch"
+                    id="flexSwitchCheckDefault" [(ngModel)]="cus_unknown">
+            </div>
+
             <div>
                 <button type="submit" class="btn btn-primary" (click)="registrarUsuario()">Registrar Cliente</button>
             </div>
         </form>
-<br/>
+        <br />
+    </div>
 </div>
 
+<!--
 <div class="container">
-    <table class="table table-striped">
+    <table class="table table-bordered">
         <thead>
           <tr>
             <th>ID</th>
@@ -88,22 +116,25 @@
           </tr>
         </thead>
         <tbody>
-          <!-- Agrega una fila para cada objeto cliente en el array -->
           <tr *ngFor="let cliente of clientes">
             <td>{{ cliente.cus_id }}</td>
             <td>{{ cliente.cus_corporatename }}</td>
             <td>{{ cliente.cus_commercialname }}</td>
-            <td>
-                <span *ngIf="cliente.cus_entity === 1">Fisica</span>
-                <span *ngIf="cliente.cus_entity === 2">Juridica</span>
-            </td>
-            <td>{{ cliente.cca_cus_fk }}</td>
+            <td>{{ entities[cliente.cus_entity] }}</td>
+            <td>{{ tipoCliente[cliente.cca_cus_fk] }}</td>
             <td>{{ cliente.cus_alias }}</td>
-            <td>{{ cliente.cus_unknown }}</td>
+            <td>
+                <span *ngIf="cliente.cus_unknown">
+                    <div class="form-check"><input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled></div>
+                </span>
+                <span *ngIf="!cliente.cus_unknown">
+                    <div class="form-check"><input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled></div>
+                </span>
+            </td>
             <td>{{ cliente.cus_country }}</td>
             <td>{{ cliente.cus_taxid }}</td>
-            <td>{{ cliente.cus_taxidtype }}</td>
-            <td>{{ cliente.cur_cus_fk }}</td>
+            <td>{{ tipoIDFiscal[cliente.cus_taxidtype] }}</td>
+            <td>{{ currencies[cliente.cur_cus_fk] }}</td>
             <td>{{ cliente.plc_cus_fk }}</td>
             <td><button class="btn btn-warning" [routerLink]="['/update',cliente.cus_id]">Modificar</button></td>
             <td><button class="btn btn-danger" (click)="onDelete(cliente.cus_id)">Delete</button></td>
@@ -111,6 +142,4 @@
         </tbody>
       </table>
 </div>
-
-
-
+-->

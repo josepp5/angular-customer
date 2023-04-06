@@ -32,7 +32,7 @@ export class Customer {
   cus_taxid: string="ABC";
   cus_disc1: any
   cus_gdprreceived: boolean=false
-  cus_taxidtype: string="Undefined"
+  cus_taxidtype: string="01"
   cus_disc2: any
   cus_gdprcrm: boolean=false
   cur_cus_fk: number=0

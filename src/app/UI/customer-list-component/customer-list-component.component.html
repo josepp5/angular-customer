@@ -1,0 +1,53 @@
+<div class="container">
+  <app-navbar></app-navbar>
+  <div style="margin-top: 120px;">
+    <h1 class="col" style="text-align: center;">{{ titulo }}</h1><br />
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Razón Social</th>
+          <th>Nom.Comercial</th>
+          <th>Entidad</th>
+          <th>Tipo Cliente</th>
+          <th>Alias</th>
+          <th>Clientes varios</th>
+          <th>Pais</th>
+          <th>CIF-NIF</th>
+          <th>Tipo ID Fiscal</th>
+          <th>Divisa</th>
+          <th>Tarifa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Agrega una fila para cada objeto cliente en el array -->
+        <tr *ngFor="let cliente of clientes">
+          <td>{{ cliente.cus_id }}</td>
+          <td>{{ cliente.cus_corporatename }}</td>
+          <td>{{ cliente.cus_commercialname }}</td>
+          <td>{{ entities[cliente.cus_entity] }}</td>
+          <td>{{ tipoCliente[cliente.cca_cus_fk] }}</td>
+          <td>{{ cliente.cus_alias }}</td>
+          <td>
+            <span *ngIf="cliente.cus_unknown">
+              <div class="form-check"><input class="form-check-input" type="checkbox" value=""
+                  id="flexCheckCheckedDisabled" checked disabled></div>
+            </span>
+            <span *ngIf="!cliente.cus_unknown">
+              <div class="form-check"><input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled"
+                  disabled></div>
+            </span>
+          </td>
+          <td>{{ cliente.cus_country }}</td>
+          <td>{{ cliente.cus_taxid }}</td>
+          <td>{{ tipoIDFiscal[cliente.cus_taxidtype] }}</td>
+          <td>{{ currencies[cliente.cur_cus_fk] }}</td>
+          <td>{{ cliente.plc_cus_fk }}</td>
+          <td><button class="btn btn-warning" [routerLink]="['/update',cliente.cus_id]">Modificar</button></td>
+          <td><button class="btn btn-danger" (click)="onDelete(cliente.cus_id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

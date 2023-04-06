@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
-import { Customer } from '../models/Customer';
-import { FastapiService } from '../services/fastapi.service';
-import { Country } from '../models/Country';
-import { TaxSystem } from '../models/TaxSystem';
-import { PaymentMethod } from '../models/PaymentMethod';
+import { Country } from 'src/app/models/Country';
+import { Customer } from 'src/app/models/Customer';
+import { PaymentMethod } from 'src/app/models/PaymentMethod';
+import { TaxSystem } from 'src/app/models/TaxSystem';
+import { FastapiService } from 'src/app/services/fastapi.service';
 
 @Component({
-  selector: 'app-customer-form-list',
-  templateUrl: './customer-form-list.component.html',
-  styleUrls: ['./customer-form-list.component.css']
+  selector: 'app-create-form-component',
+  templateUrl: './create-form-component.component.html',
+  styleUrls: ['./create-form-component.component.css']
 })
-
-export class CustomerFormListComponent {
-
+export class CreateFormComponentComponent {
   titulo:string = "Customer Form";
   clientes:Customer[]=[];
   countries:Country[]=[];
@@ -84,40 +82,32 @@ export class CustomerFormListComponent {
     });
   }
 
-  onDelete(index:number){
-    this.dataService.eliminarCustomer(index).subscribe(
-      response => { console.log("Se ha eliminado el cliente: " + response);
-    },
-      error => console.log("Error: " + error),
-    );
-  }
 
   registrarUsuario(){
-      const miCliente = new Customer();
-      miCliente.cus_id = this.clientes.length+1;
-      miCliente.cus_corporatename = this.cus_corporatename;
-      miCliente.cus_commercialname = this.cus_commercialname;
-      miCliente.cus_country = this.cus_country;
-      miCliente.cus_alias = this.cus_alias;
-      miCliente.cus_taxid = this.cus_taxid;
-      miCliente.cus_taxidtype = this.cus_taxidtype;
-      miCliente.cus_unknown = this.cus_unknown;
-      miCliente.cur_cus_fk = this.cur_cus_fk;
-      miCliente.tas_cus_fk = this.tas_cus_fk;
-      miCliente.cca_cus_fk = this.cca_cus_fk;
-      miCliente.pam_cus_fk = this.pam_cus_fk;
-      miCliente.cus_entity = this.cus_entity;
-      //if (this.cus_entity == "Fisica") miCliente.cus_entity = 1; else miCliente.cus_entity = 2
-      
-    console.log(miCliente);
+    const miCliente = new Customer();
+    miCliente.cus_id = this.clientes.length+1;
+    miCliente.cus_corporatename = this.cus_corporatename;
+    miCliente.cus_commercialname = this.cus_commercialname;
+    miCliente.cus_country = this.cus_country;
+    miCliente.cus_alias = this.cus_alias;
+    miCliente.cus_taxid = this.cus_taxid;
+    miCliente.cus_taxidtype = this.cus_taxidtype;
+    miCliente.cus_unknown = this.cus_unknown;
+    miCliente.cur_cus_fk = this.cur_cus_fk;
+    miCliente.tas_cus_fk = this.tas_cus_fk;
+    miCliente.cca_cus_fk = this.cca_cus_fk;
+    miCliente.pam_cus_fk = this.pam_cus_fk;
+    miCliente.cus_entity = this.cus_entity;
+    //if (this.cus_entity == "Fisica") miCliente.cus_entity = 1; else miCliente.cus_entity = 2
     
-    this.dataService.registrarCustomer(miCliente).subscribe(
-      response => { console.log("Se ha guardado el empleado: " + response);
-    },
-      error => { console.log("Error: " + error);
-    },);
-    this.clientes.push(miCliente);
-    console.log(this.clientes);
-  }
+  console.log(miCliente);
+  
+  this.dataService.registrarCustomer(miCliente).subscribe(
+    response => { console.log("Se ha guardado el empleado: " + response);
+  },
+    error => { console.log("Error: " + error);
+  },);
+  this.clientes.push(miCliente);
+  console.log(this.clientes);
 }
-
+}

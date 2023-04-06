@@ -1,0 +1,16 @@
+{  
+    "name": "myCustomers",
+
+    "short_name": "CSTMR",
+
+    "theme_color": "#fff", 
+
+    "background_color": "#fff", 
+
+    "display": "browser",  
+
+    "scope": "/",  
+
+    "start_url": "/"
+    
+}

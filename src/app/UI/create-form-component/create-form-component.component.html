@@ -1,0 +1,83 @@
+<div class="container col md-6">
+    <h1 class="col" style="text-align: center;">{{ titulo }}</h1><br/>
+        <form class="form-group row">
+            
+            <div class="form-group col-md-3">
+                <label for="cus_entity">Entity : </label>
+                <select class="form-select" name="cus_entity" aria-label="Entity" [(ngModel)]="cus_entity">
+                    <option *ngFor="let option of entities | keyvalue" [value]="option.key">{{ option.value }}</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Corporate name : </label>
+                <input type="text" class="form-control" placeholder="cus_corporatename" id="cus_corporatename" name="cus_corporatename" [(ngModel)]="cus_corporatename"><br/>
+            </div>
+            
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Commercial name : </label>
+                <input type="text" class="form-control" placeholder="cus_commercialname" name="cus_commercialname" [(ngModel)]="cus_commercialname"><br/>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cus_country">Country : </label>
+                <select class="form-select" aria-label="Country" name="cus_country" [(ngModel)]="cus_country">
+                    <option *ngFor="let option of countries" [value]="option.cou_id">{{ option.cou_countryname }}</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Alias : </label>
+                <input type="text" class="form-control" placeholder="cus_alias" name="cus_alias" [(ngModel)]="cus_alias"><br/>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">CIF / NIF : </label>
+                <input type="text" class="form-control" placeholder="cus_taxid" name="cus_taxid" [(ngModel)]="cus_taxid"><br/>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Tipo ID Fiscal : </label>
+                <select class="form-select" aria-label="cus_taxidtype" name="cus_taxidtype" [(ngModel)]="cus_taxidtype">
+                    <option *ngFor="let option of tipoIDFiscal | keyvalue" [value]="option.key">{{ option.value }}</option>
+                </select>
+            </div>
+            
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Divisa : </label>
+                <select class="form-select" aria-label="cur_cus_fk" name="cur_cus_fk" [(ngModel)]="cur_cus_fk">
+                    <option *ngFor="let option of currencies | keyvalue" [value]="option.key">{{ option.value }}</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Sistema de Impuestos : </label>
+                <select class="form-select" name="tas_cus_fk" aria-label="Tax System" [(ngModel)]="tas_cus_fk">
+                    <option *ngFor="let option of taxSystems" [value]="option.tas_id">{{ option.tas_description }}</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Forma de pago : </label>
+                <select class="form-select" name="pam_cus_fk" aria-label="PaymentMethods" [(ngModel)]="pam_cus_fk">
+                    <option *ngFor="let option of paymentMethods" [value]="option.pam_id">{{ option.pam_description }}</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="cus_corporatename">Tipo de Cliente : </label>
+                <select class="form-select" aria-label="cca_cus_fk" name="cca_cus_fk" [(ngModel)]="cca_cus_fk">
+                    <option *ngFor="let option of tipoCliente | keyvalue" [value]="option.key">{{ option.value }}</option>
+                </select>
+            </div>
+
+            <div class="form-check form-switch col-md-3 m-4">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Clientes varios </label>
+                <input class="form-check-input" type="checkbox" name="cus_unknown" role="switch" id="flexSwitchCheckDefault" [(ngModel)]="cus_unknown">
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary" (click)="registrarUsuario()">Registrar Cliente</button>
+            </div>
+        </form>
+    <br/>
+</div>

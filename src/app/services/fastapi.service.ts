@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Customer } from '../models/Customer';
 import { AuthService } from './authService.service';
 import { Country } from '../models/Country';
+import { TaxSystem } from '../models/TaxSystem';
+import { PaymentMethod } from '../models/PaymentMethod';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +42,10 @@ export class FastapiService {
     return this.http.get<Customer>(this.url+`/customer/${id}`, this.httpOptions);
   }
 
+  getCustomer_by_corporatename(corporateName: string): Observable<Customer> {
+    return this.http.get<Customer>(this.url+`/customer_by_corporatename/${corporateName}`, this.httpOptions);
+  }
+
   registrarCustomer(customer: Customer) {
     let body = "{\"parameter\" : "+ JSON.stringify(customer)  +"}";
     return this.http.post<Customer>(this.url+'/customer/create', body,this.httpOptions);
@@ -65,5 +71,12 @@ export class FastapiService {
     return this.http.get<Country[]>(this.url+'/countries', this.httpOptions);
   }
 
+  getTaxSystems(): Observable<TaxSystem[]> {
+    return this.http.get<TaxSystem[]>(this.url+'/taxsystems', this.httpOptions);
+  }
+
+  getPaymentMethods(): Observable<PaymentMethod[]> {
+    return this.http.get<PaymentMethod[]>(this.url+'/paymentMethods', this.httpOptions);
+  }
 }
 

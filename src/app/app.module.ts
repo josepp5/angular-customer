@@ -11,6 +11,10 @@ import { UpdateComponentComponent } from './update-component/update-component.co
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResponsiveLoginComponent } from './responsive-login/responsive-login.component';
+import { NavbarComponent } from './UI/navbar/navbar.component';
+import { CreateFormComponentComponent } from './UI/create-form-component/create-form-component.component';
+import { CustomerListComponentComponent } from './UI/customer-list-component/customer-list-component.component';
+import { DetailComponentComponent } from './UI/detail-component/detail-component.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { ResponsiveLoginComponent } from './responsive-login/responsive-login.co
     CustomerFormListComponent,
     UpdateComponentComponent,
     LoginComponentComponent,
-    ResponsiveLoginComponent
+    ResponsiveLoginComponent,
+    NavbarComponent,
+    CreateFormComponentComponent,
+    CustomerListComponentComponent,
+    DetailComponentComponent
   ],
   imports: [
     BrowserModule,
